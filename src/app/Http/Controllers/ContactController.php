@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -13,17 +15,18 @@ class ContactController extends Controller
     }
 
     // 確認画面の表示
-    public function confirm(Request $request)
+    public function confirm(ContactRequest $request)
     {
-        // フォームのデータを取得
-        $data = $request->all();
+        // バリデーション済みのデータを取得
+        $data = $request->validated();
         return view('contact.confirm', compact('data'));
     }
 
     // フォーム送信処理
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        // データ保存処理（後で実装）
+        // データを保存
+        Contact::create($request->validated());
         return redirect()->route('contact.thanks');
     }
 
