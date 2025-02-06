@@ -14,10 +14,9 @@ class ContactController extends Controller
         return view('contact.index');
     }
 
-    // 確認画面の表示
+    // 確認画面の表示（バリデーション済みのデータを取得）
     public function confirm(ContactRequest $request)
     {
-        // バリデーション済みのデータを取得
         $data = $request->validated();
         return view('contact.confirm', compact('data'));
     }
@@ -25,9 +24,8 @@ class ContactController extends Controller
     // フォーム送信処理（データの保存）
     public function store(ContactRequest $request)
     {
-        // データを保存
         Contact::create($request->validated());
-        return redirect()->route('contact.thanks');
+        return redirect()->route('contact.thanks'); // 🔹 サンクスページにリダイレクト
     }
 
     // サンクスページの表示
