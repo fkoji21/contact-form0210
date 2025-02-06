@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,22 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [AuthController::class, 'index']);
+// お問い合わせフォーム
+Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
+
+// 管理画面（ログインが必要）
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
+
+// ログイン・登録ページ（Fortifyのデフォルトルート）
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
