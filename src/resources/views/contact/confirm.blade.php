@@ -13,7 +13,8 @@
         <p>電話番号: {{ $data['tel'] }}</p>
         <p>住所: {{ $data['address'] }}</p>
         <p>お問い合わせ内容: {{ $data['detail'] }}</p>
+
         <button type="submit">送信する</button>
-        <a href="{{ url()->previous() }}">修正する</a>
     </form>
+    <a href="{{ url()->previous() }}">修正する</a>
 @endsection

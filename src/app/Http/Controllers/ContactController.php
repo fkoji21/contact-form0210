@@ -22,7 +22,7 @@ class ContactController extends Controller
         return view('contact.confirm', compact('data'));
     }
 
-    // フォーム送信処理
+    // フォーム送信処理（データの保存）
     public function store(ContactRequest $request)
     {
         // データを保存
