@@ -52,26 +52,4 @@ class AdminController extends Controller
         return redirect()->route('admin.contacts')->with('success', 'お問い合わせを削除しました');
     }
 
-    public function createAdmin()
-    {
-        return view('admin.create_admin');
-    }
-
-    public function storeAdmin(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'is_admin' => true, // ここがポイント
-        ]);
-
-        return redirect()->route('admin.index')->with('success', '管理者が作成されました');
-    }
 }
