@@ -8,5 +8,10 @@
     <ul>
         <li><a href="{{ route('admin.contacts') }}">お問い合わせ一覧</a></li>
     </ul>
-    <a href="{{ route('logout') }}">ログアウト</a>
+    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+        @csrf
+        <button type="submit" style="border: none; background: none; color: blue; cursor: pointer;">
+            ログアウト
+        </button>
+    </form>
 @endsection
