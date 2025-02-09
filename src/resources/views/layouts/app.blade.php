@@ -3,25 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'お問い合わせフォーム')</title>
+    <title>お問い合わせフォーム</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{{ route('contact.index') }}">ホーム</a></li>
-                <li><a href="{{ route('admin.index') }}">管理画面</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <h1 class="title">FashionablyLate</h1>
     </header>
-    
-    <main>
-        @yield('content')
-    </main>
 
-    <footer>
-        <p>&copy; 2025 お問い合わせフォーム</p>
-    </footer>
+    <div class="container">
+        @yield('content')
+    </div>
 </body>
 </html>
