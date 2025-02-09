@@ -38,5 +38,9 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function () {
             return view('auth.register');
         });
+
+        // ログイン後のリダイレクト先を管理画面に設定
+        Fortify::redirects('login', '/admin');
+        
     }
 }

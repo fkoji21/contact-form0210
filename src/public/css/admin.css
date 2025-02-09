@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap');
+
+/* 管理画面専用のスタイル */
+body.admin {
+    font-family: 'Inika', serif;
+    background-color: #f8f6f4;
+    color: #82756A;
+}
+
+/* 管理画面コンテナ */
+.admin-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ヘッダー */
+.admin-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #f2ebe3;
+    border-radius: 8px;
+}
+
+/* テーブル */
+.contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.contacts-table th,
+.contacts-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.contacts-table th {
+    background-color: #a58b75;
+    color: white;
+}
+
+.contacts-table td {
+    background-color: #f9f7f5;
+}
+
+/* ページネーションの矢印を適正サイズにする */
+.pagination a,
+.pagination span {
+    font-size: 14px !important;
+    /* フォントサイズを適正に */
+    padding: 8px 12px !important;
+    text-decoration: none;
+    background-color: #f2ebe3;
+    border-radius: 4px;
+    margin: 2px;
+    color: #5a4a42;
+    display: inline-block !important;
+    /* インライン要素にする */
+}
+
+/* ページネーションの「前」「次」ボタン */
+.pagination .page-item .page-link {
+    font-size: 14px !important;
+    padding: 6px 10px !important;
+}
+
+/* 矢印のサイズを固定 */
+.pagination .page-item .page-link svg {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+/* Bootstrap / Tailwind の影響を防ぐ */
+.pagination .page-item {
+    display: inline-block !important;
+}
+
+/* 検索フォームを横並びに */
+.search-form form {
+    display: flex;
+    flex-wrap: wrap;
+    /* 横幅が狭い場合は折り返す */
+    gap: 10px;
+    align-items: center;
+}
+
+/* 検索フォーム内の要素のサイズを統一 */
+.search-form input,
+.search-form select,
+.search-form button {
+    height: 40px;
+    /* 高さを統一 */
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+/* ボタンのスタイル */
+.search-form button {
+    background-color: #5a4a42;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search-form button:hover {
+    background-color: #3d3129;
+}
+
+.pagination p {
+    display: none;
+}
+
+/* モーダルの背景 */
+.modal {
+    display: none;
+    /* 初期状態では非表示 */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* モーダルの中身 */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 50%;
+    margin: 10% auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 閉じるボタン */
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* 削除ボタン */
+.delete-button {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: #c9302c;
+}
+
+/* 検索フォームを横並びに */
+.search-flex {
+    display: flex;
+    gap: 10px;
+    /* 各要素の間隔を調整 */
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    /* 画面が小さい時に折り返し */
+}
+
+/* 各検索フィールドのサイズを調整 */
+.search-name {
+    width: 250px !important;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.search-gender {
+    width: 80px;
+}
+
+.search-category {
+    width: 120px;
+}
+
+.search-date {
+    width: 140px;
+}
+
+.search-button,
+.reset-button {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #82756A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-button:hover,
+.reset-button:hover {
+    background-color: #6b5b52;
+}
