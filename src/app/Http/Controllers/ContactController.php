@@ -21,36 +21,41 @@ class ContactController extends Controller
         \Log::info($request->all());
         
         $data = $request->validated();
+        $data['tel'] = $data['tel1'] . '-' . $data['tel2'] . '-' . $data['tel3'];
         return view('contact.confirm', compact('data'));
     }
 
     // フォーム送信処理（データの保存）
     public function store(ContactRequest $request)
     {
-        \Log::info('store メソッドが実行されました。');
-        \Log::info($request->validated());
+        \Log::info('🟢 store() メソッドが実行されました');
 
-        // バリデーション済みデータを取得
-        $data = $request->validated();
+    // リクエストデータをログ出力
+    \Log::info('リクエストデータ:', $request->all());
 
-        // category_id のデフォルト値を設定 (もし未指定なら 1 を設定)
-        $data['category_id'] = $data['category_id'] ?? 1;
+    // バリデーション済みデータを取得
+    $data = $request->validated();
+    \Log::info('バリデーション済みデータ:', $data);
 
-        // データを保存
+    // 電話番号を結合
+    $data['tel'] = $data['tel1'] . '-' . $data['tel2'] . '-' . $data['tel3'];
+
+    // 🔥 `category` を `category_id` に変換（ここが重要）
+    $data['category_id'] = (int) $data['category'];
+    unset($data['category']); // `category` は不要なので削除
+
+    // データ保存を試みる
+    try {
         $contact = Contact::create($data);
-
         if ($contact) {
-            \Log::info('データが正常に保存されました');
+            \Log::info('✅ データが正常に保存されました', $contact->toArray());
         } else {
-            \Log::error('データの保存に失敗しました');
+            \Log::error('⚠️ データの保存に失敗しました');
         }
-
-        return redirect()->route('contact.thanks');
+    } catch (\Exception $e) {
+        \Log::error('🛑 データベースエラー: ' . $e->getMessage());
     }
 
-    // サンクスページの表示
-    public function thanks()
-    {
-        return view('contact.thanks');
+    return redirect()->route('contact.thanks');
     }
 }

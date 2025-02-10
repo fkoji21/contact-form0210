@@ -22,7 +22,7 @@ Route::get('/confirm', function () {
     return redirect()->route('contact.index');
 });
 Route::post('/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
 
 // 管理画面（ログインが必要）

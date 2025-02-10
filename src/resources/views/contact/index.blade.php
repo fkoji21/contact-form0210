@@ -73,10 +73,20 @@
             <!-- お問い合わせ内容 -->
             <tr>
                 <th class="align-top">お問い合わせ内容 <span>※</span></th>
-                <td><textarea name="message" placeholder="お問い合わせ内容をご記載ください"></textarea></td>
+                <td><textarea name="detail" placeholder="お問い合わせ内容をご記載ください"></textarea></td>
             </tr>
         </table>
 
         <button type="submit" class="submit-btn">確認画面へ</button>
     </form>
 @endsection
+
+@if ($errors->any())
+    <div class="error-messages">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif

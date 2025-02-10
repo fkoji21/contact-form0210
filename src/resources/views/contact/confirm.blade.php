@@ -10,7 +10,7 @@
         @if(isset($data))
         <p>姓: {{ $data['first_name'] }}</p>
         <p>名: {{ $data['last_name'] }}</p>
-        <p>性別: {{ $data['gender'] == 1 ? '男性' : '女性' }}</p>
+        <p>性別: {{ $data['gender'] }}</p>
         <p>メールアドレス: {{ $data['email'] }}</p>
         <p>電話番号: {{ $data['tel'] }}</p>
         <p>住所: {{ $data['address'] }}</p>

@@ -19,16 +19,18 @@ class ContactRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'integer', 'in:1,2,3'],
-            'email' => ['required', 'email', 'max:255'],
-            'tel' => ['required', 'regex:/^[0-9]{10,11}$/'],
-            'address' => ['required', 'string', 'max:255'],
-            'building' => ['nullable', 'string', 'max:255'],
-            'detail' => ['required', 'string', 'max:120'],
-        ];
+    return [
+        'first_name' => ['required', 'string', 'max:255'],
+        'last_name' => ['required', 'string', 'max:255'],
+        'gender' => ['required', 'string', 'in:男性,女性,その他'], // ← 修正！
+        'email' => ['required', 'email', 'max:255'],
+        'tel1' => ['required', 'digits_between:2,4'], // ← 2桁以上4桁以下
+        'tel2' => ['required', 'digits_between:3,4'], // ← 3桁以上4桁以下
+        'tel3' => ['required', 'digits:4'], // ← 4桁固定
+        'address' => ['required', 'string', 'max:255'],
+        'building' => ['nullable', 'string', 'max:255'],
+        'detail' => ['required', 'string', 'max:120'],
+    ];
     }
 
     /**
